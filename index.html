@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="叩问天命，让命运之轮为你降下一签。"
+    />
+    <meta name="theme-color" content="#090705" />
+    <title>天命签 · Fortune Reel</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23090705'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-size='40'%3E%E5%90%89%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <div class="moon"></div>
+      <div class="mist mist-one"></div>
+      <div class="mist mist-two"></div>
+      <span class="star star-one">✦</span>
+      <span class="star star-two">·</span>
+      <span class="star star-three">✧</span>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="天命签首页">
+        <span class="brand-seal">命</span>
+        <span class="brand-copy">
+          <b>天命签</b>
+          <small>FORTUNE REEL</small>
+        </span>
+      </a>
+
+      <div class="header-actions">
+        <button class="icon-button" id="soundToggle" type="button" aria-label="关闭声音" aria-pressed="true">
+          <span class="sound-on" aria-hidden="true">♪</span>
+          <span class="sound-off" aria-hidden="true">×</span>
+        </button>
+        <button class="text-button" id="oddsButton" type="button">
+          签率
+          <span aria-hidden="true">↗</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="pageTitle">
+        <div class="eyebrow"><span></span> 一念既起 · 万象皆应 <span></span></div>
+        <h1 id="pageTitle">叩问<span>天命</span></h1>
+        <p class="intro">静心，落签。你与今日的运势，只隔一次转动。</p>
+
+        <div class="oracle-shell" id="oracleShell">
+          <div class="hanging-charm charm-left" aria-hidden="true">
+            <i></i><span>福</span><i></i>
+          </div>
+          <div class="hanging-charm charm-right" aria-hidden="true">
+            <i></i><span>运</span><i></i>
+          </div>
+
+          <div class="reel-frame">
+            <div class="frame-mark top-mark" aria-hidden="true">◆</div>
+            <div class="reel-window" id="reelWindow" aria-live="off">
+              <div class="reel-fade reel-fade-top"></div>
+              <div class="reel-fade reel-fade-bottom"></div>
+              <div class="selection-line selection-line-top"></div>
+              <div class="selection-line selection-line-bottom"></div>
+              <div class="side-pointer side-pointer-left">◆</div>
+              <div class="side-pointer side-pointer-right">◆</div>
+              <div class="reel-track" id="reelTrack"></div>
+            </div>
+            <div class="frame-mark bottom-mark" aria-hidden="true">◇</div>
+          </div>
+        </div>
+
+        <div class="result-panel" id="resultPanel" aria-live="polite">
+          <div class="result-kicker" id="resultKicker">签筒未启</div>
+          <div class="result-name" id="resultName">待 · 天 · 命</div>
+          <p id="resultMessage">闭目三息，再叩问命运。</p>
+        </div>
+
+        <button class="spin-button" id="spinButton" type="button">
+          <span class="button-glyph" aria-hidden="true">✦</span>
+          <span class="button-label">叩问天命</span>
+          <span class="button-glyph" aria-hidden="true">✦</span>
+        </button>
+        <p class="hint">点击落签 · 每一次皆为独立机缘</p>
+      </section>
+
+      <section class="history-section" aria-labelledby="historyTitle">
+        <div class="section-heading">
+          <div>
+            <span>PAST OMENS</span>
+            <h2 id="historyTitle">近时签象</h2>
+          </div>
+          <button id="clearHistory" type="button" disabled>清空</button>
+        </div>
+        <div class="history-list" id="historyList">
+          <div class="history-empty">
+            <span>○</span>
+            <p>尚无签象，命运仍在静候。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>天机不可尽泄</span>
+      <i>◆</i>
+      <span>此签只供一笑</span>
+    </footer>
+
+    <dialog class="odds-dialog" id="oddsDialog">
+      <div class="dialog-header">
+        <div>
+          <span>THE WEIGHT OF FATE</span>
+          <h2>天命签率</h2>
+        </div>
+        <button class="close-button" id="closeOdds" type="button" aria-label="关闭签率">×</button>
+      </div>
+      <p class="dialog-intro">吉凶相生，彼此同率。卷轴旁掠过的签象仅为演出，不会改变落签结果。</p>
+      <div class="odds-list" id="oddsList"></div>
+      <div class="odds-total"><span>合计</span><strong>100%</strong></div>
+    </dialog>
+
+    <div class="flash-layer" id="flashLayer" aria-hidden="true"></div>
+    <div class="particle-layer" id="particleLayer" aria-hidden="true"></div>
+  </body>
+</html>
